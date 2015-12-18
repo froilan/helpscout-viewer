@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="MainApp.js"></script>
+	<script src="controllers/TagController.js"></script>
+	<script src="controllers/ConversationController.js"></script>
+	<script src="services/ConversationService.js"></script>
+	<script src="controllers/MailboxController.js"></script>
+	<script src="services/MailboxService.js"></script>
+</head>
+<body>
+<div class="container">
+	<div ng-controller="ConversationController">
+		<div ng-controller="MailboxController">
+			<form class="form-horizontal">
+				<fieldset ng-disabled="mailboxChangeLoading">
+					<div class="form-group">
+						<label for="mailboxSelect" class="control-label">Mailbox:</label>
+						<select id="mailboxSelect" class="form-control" ng-model="mailboxId" ng-options="mailbox.id as mailbox.name for mailbox in mailboxList" ng-change="setCurrentMailbox(mailboxId)" style="width:auto;display:inline-block;">
+							<option value="">All Mailboxes</option>
+						</select>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<br/>
+		
+		<div class="row text-center">
+			<div ng-show="mailboxChangeLoading">
+				<i class="fa fa-spinner fa-spin" style="font-size:8em"></i>
+			</div>
+			<div ng-hide="mailboxChangeLoading">
+				<div class="col-sm-4">
+					<div class="panel panel-primary">
+					  <div class="panel-heading"><h4>Active</h4></div>
+					  <div class="panel-body"><h2>{{activeCount}}</h2></div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-primary">
+					  <div class="panel-heading"><h4>Pending</h4></div>
+					  <div class="panel-body"><h2>{{pendingCount}}</h2></div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-primary">
+					  <div class="panel-heading"><h4>Closed</h4></div>
+					  <div class="panel-body"><h2>{{closedCount}}</h2></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--
+	<div ng-init="tagList=getTags()" ng-controller="tagController">
+		<table>
+		   <tr>
+			  <th>Tag Name</th>
+			  <th>Count</th>
+		   </tr>
+		   <tr ng-repeat="tag in tagList">
+			  <td>{{tag.name}}</td>
+			  <td>{{tag.count}}</td>
+		   </tr>
+		</table>
+	</div>
+	-->
+</div>
+</body>
+</html>
