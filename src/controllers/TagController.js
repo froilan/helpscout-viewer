@@ -6,7 +6,7 @@ mainApp.controller('tagController', function($scope, $http) {
 			method: 'GET',
 			url: 'https://api.helpscout.net/v1/tags.json',
 			headers: {
-				'Authorization': 'Basic YTg1YTU3NTNlOWQ3Mjg0MjAyNmQ5Yzg2YjE1NDI4Y2I2YzVmMTk5MDpjaGFuZ2V0aGlz'
+				'Authorization': 'Basic <insert key here>'
 			}
 		}
 		$http(req).success(function(response) {
