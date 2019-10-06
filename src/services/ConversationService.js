@@ -8,7 +8,7 @@ mainApp.service('ConversationService', function($http){
 			method: 'GET',
 			url: url,
 			headers: {
-				'Authorization': 'Basic YTg1YTU3NTNlOWQ3Mjg0MjAyNmQ5Yzg2YjE1NDI4Y2I2YzVmMTk5MDpjaGFuZ2V0aGlz'
+				'Authorization': 'Basic <put key here>'
 			}
 		}
 		
